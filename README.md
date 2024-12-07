@@ -17,7 +17,6 @@ This project is a graphical calculator application built using the **CustomTkint
 
 - Python 3.x installed on your system.
 - `customtkinter` library.
-- `Pillow` library (optional if using an icon).
 
 ### Steps
 
@@ -55,10 +54,10 @@ This project is a graphical calculator application built using the **CustomTkint
 
 ## Code Explanation
 
-- **`insert_text`**** Function:**
+- **`insert_text` Function:**
   Handles inserting characters (numbers or operators) into the entry field based on keyboard input or button presses.
 
-- **`remove_text`**** Function:**
+- **`remove_text` Function:**
   Removes the last character from the entry field when `Backspace` is pressed. Supports clearing the entire field with the `CE` button.
 
 - **`evaluate_expression`**** Function:**
