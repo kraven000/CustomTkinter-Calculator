@@ -23,7 +23,7 @@ This project is a graphical calculator application built using the **CustomTkint
 1. Clone this repository or copy the code.
 2. Install the required libraries:
    ```bash
-   pip install customtkinter
+   pip install -r requirements.txt
    ```
 3. Place an icon file (e.g., `icon.ico`) in the same directory as the script if you want to customize the window icon.
 4. Run the script using Python:
@@ -60,7 +60,7 @@ This project is a graphical calculator application built using the **CustomTkint
 - **`remove_text` Function:**
   Removes the last character from the entry field when `Backspace` is pressed. Supports clearing the entire field with the `CE` button.
 
-- **`evaluate_expression`**** Function:**
+- **`evaluate_expression` Function:**
   Evaluates the mathematical expression entered in the field and displays the result.
 
 - **CustomTkinter Buttons:**
