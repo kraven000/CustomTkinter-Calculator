@@ -1,0 +1,4 @@
+This are the artist in Pixabay
+
+Say thanks to IO-Images for icon.png
+The icon.png was converted into icon.ico so that it can be used in applications
