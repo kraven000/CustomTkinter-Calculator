@@ -1,28 +1,21 @@
 import customtkinter as ct
 
 
-index = 0
+index = None
 
 def insert_text(events=None):
     '''It is the function which adds the number or mathematical operators in the Entry widget.'''
     global index
-
-    if number_expression.get()=="ERROR!":
+    index = len(entry.get())
+    if number_expression.get().upper() in {"ERROR!","CANNOT DIVIDE BY ZERO"}:
         entry.delete(0,ct.END)
 
     try:
         if events.char.isdigit() or events.char in {"+","-","*",r"/","."}:
-            if len(number_expression.get())==0:
-                index = 0
-            else:
-                index += 1
-
             entry.insert(index,events.char)
     except AttributeError:
         if events.isdigit() or events in {"+","-","*",r"/","."}:
             entry.insert(index,events)
-
-    index += 1
 
 
 def remove_text(events=None,remove_all=False):
@@ -40,14 +33,15 @@ def remove_text(events=None,remove_all=False):
 def evaluate_expression(events=None):
     '''It is the function which evaluate all the expression in the entry widget if enter is pressed or
     '=' is clicked.'''
-
+    current_text = number_expression.get()
+    entry.delete(0,ct.END)
+    
     try:
-        result = str(eval(number_expression.get()))
-        entry.delete(0,ct.END)
-
+        result = str(eval(current_text))
     except SyntaxError:
-        entry.delete(0,ct.END)
         entry.insert(0,"ERROR!")
+    except ZeroDivisionError:
+        entry.insert(0,"Cannot Divide by Zero")
     else:
         entry.insert(0,result)
 
@@ -61,10 +55,10 @@ if __name__=="__main__":
     window.resizable(False,False)
 
     number_expression = ct.StringVar()
+    
     entry = ct.CTkEntry(window,textvariable=number_expression,width=377,height=120,
-                        font=("Roboto",40),justify="right")
+                        font=("Roboto",35),justify="right")
     entry.place(x=0,y=1)
-
 
     window.bind("<Key>",insert_text)
     window.bind("<BackSpace>",remove_text)
